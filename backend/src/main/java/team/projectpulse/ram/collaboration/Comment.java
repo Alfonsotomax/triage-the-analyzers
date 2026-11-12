@@ -36,6 +36,7 @@ public class Comment {
 
 
     public Comment() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Long getId() {

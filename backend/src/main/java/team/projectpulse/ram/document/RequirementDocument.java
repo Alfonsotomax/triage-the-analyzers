@@ -53,6 +53,7 @@ public class RequirementDocument {
 
 
     public RequirementDocument() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public void addSection(DocumentSection section) {

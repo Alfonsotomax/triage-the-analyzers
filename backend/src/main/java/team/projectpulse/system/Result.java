@@ -16,6 +16,7 @@ public class Result {
 
 
     public Result() {
+        // Lets Jackson and other JavaBean tools create it before calling the setters
     }
 
     public Result(boolean flag, Integer code, String message) {

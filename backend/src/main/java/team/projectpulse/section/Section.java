@@ -52,6 +52,7 @@ public class Section {
 
 
     public Section() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Section(String sectionName,

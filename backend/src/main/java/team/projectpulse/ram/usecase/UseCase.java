@@ -74,6 +74,7 @@ public class UseCase {
 
 
     public UseCase() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     /* ---------- Convenience helpers ---------- */

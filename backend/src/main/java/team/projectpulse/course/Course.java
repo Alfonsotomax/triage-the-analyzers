@@ -33,6 +33,7 @@ public class Course {
     private List<Rubric> rubrics = new ArrayList<>();
 
     public Course() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Course(String courseName, String courseDescription) {

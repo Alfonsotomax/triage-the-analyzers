@@ -70,6 +70,7 @@ public class DocumentSection {
 
 
     public DocumentSection() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     /* ---------- Convenience helpers ---------- */

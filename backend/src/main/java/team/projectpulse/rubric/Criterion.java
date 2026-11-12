@@ -22,6 +22,7 @@ public class Criterion {
 
 
     public Criterion() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Criterion(String criterion, String description, Double maxScore) {

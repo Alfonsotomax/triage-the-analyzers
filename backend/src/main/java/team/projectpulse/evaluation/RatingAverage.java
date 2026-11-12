@@ -7,6 +7,7 @@ public class RatingAverage {
 
 
     public RatingAverage() {
+        // Lets Jackson and other JavaBean tools create it before calling the setters
     }
 
     public RatingAverage(Integer criterionId, Double averageScore) {

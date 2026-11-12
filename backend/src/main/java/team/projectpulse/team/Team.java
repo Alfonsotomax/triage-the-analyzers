@@ -26,6 +26,7 @@ public class Team {
 
 
     public Team() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Team(String teamName, String description, String teamWebsiteUrl) {

@@ -78,7 +78,7 @@ public class RequirementArtifact {
 
 
     public RequirementArtifact() {
-
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public RequirementArtifact(Team team, RequirementArtifactType type, String title, String content, String notes) {

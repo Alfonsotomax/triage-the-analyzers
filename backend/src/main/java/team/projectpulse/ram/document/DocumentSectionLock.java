@@ -33,6 +33,7 @@ public class DocumentSectionLock {
 
 
     public DocumentSectionLock() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public boolean isLocked(Instant now) {

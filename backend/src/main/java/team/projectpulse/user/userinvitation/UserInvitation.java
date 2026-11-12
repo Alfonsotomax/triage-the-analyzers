@@ -15,6 +15,7 @@ public class UserInvitation {
 
 
     public UserInvitation() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public UserInvitation(String email, Integer courseId, Integer sectionId, String token, String role) {

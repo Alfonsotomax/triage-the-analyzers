@@ -19,6 +19,7 @@ public class UseCaseExtensionStep {
 
 
     public UseCaseExtensionStep() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public UseCaseExtensionStep(String actor, String actionText) {
