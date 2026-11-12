@@ -15,6 +15,11 @@
     <rule ref="rulesets/java/quickstart.xml">
         <!-- Re-declared below with an entity exception. -->
         <exclude name="UnnecessaryConstructor"/>
+        <!-- GuardLogStatement: we log through SLF4J with {} placeholders, which already skips building the
+             message when a level is off. Arguments are cheap getters, and most calls are info/error, on in
+             every profile, so a guard adds noise and no saving. For an expensive argument, use SLF4J's
+             fluent API with a supplier: LOGGER.atDebug().addArgument(() -> ...). -->
+        <exclude name="GuardLogStatement"/>
     </rule>
 
     <!-- UnnecessaryConstructor, except in JPA entities: an entity keeps its explicit no-argument
