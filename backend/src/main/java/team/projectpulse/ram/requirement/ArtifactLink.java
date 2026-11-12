@@ -51,6 +51,7 @@ public class ArtifactLink {
 
 
     public ArtifactLink() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Long getId() {

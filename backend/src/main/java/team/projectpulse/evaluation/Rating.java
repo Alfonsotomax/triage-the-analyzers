@@ -17,6 +17,7 @@ public class Rating {
 
 
     public Rating() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Rating(Criterion criterion, Double actualScore) {

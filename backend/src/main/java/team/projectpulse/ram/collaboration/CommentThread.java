@@ -60,6 +60,7 @@ public class CommentThread {
 
 
     public CommentThread() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public void addComment(Comment comment) {

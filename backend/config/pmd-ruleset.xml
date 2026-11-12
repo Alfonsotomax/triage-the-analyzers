@@ -13,5 +13,23 @@
          xsi:schemaLocation="http://pmd.sourceforge.net/ruleset/2.0.0 https://pmd.sourceforge.io/ruleset_2_0_0.xsd">
     <description>PMD quickstart, with Project Pulse's decisions.</description>
     <rule ref="rulesets/java/quickstart.xml">
+        <!-- Re-declared below with an entity exception. -->
+        <exclude name="UnnecessaryConstructor"/>
+        <!-- GuardLogStatement: we log through SLF4J with {} placeholders, which already skips building the
+             message when a level is off. Arguments are cheap getters, and most calls are info/error, on in
+             every profile, so a guard adds noise and no saving. For an expensive argument, use SLF4J's
+             fluent API with a supplier: LOGGER.atDebug().addArgument(() -> ...). -->
+        <exclude name="GuardLogStatement"/>
+    </rule>
+
+    <!-- UnnecessaryConstructor, except in JPA entities: an entity keeps its explicit no-argument
+         constructor even when Java would generate the same one. JPA needs it, and if someone later
+         adds a constructor with arguments, Java stops generating it and Hibernate fails at runtime,
+         not at compile time. backend/CLAUDE.md also asks for explicit constructors in entities. -->
+    <rule ref="category/java/codestyle.xml/UnnecessaryConstructor">
+        <properties>
+            <property name="violationSuppressXPath"
+                      value="./ancestor::ClassDeclaration[pmd-java:hasAnnotation('jakarta.persistence.Entity')]"/>
+        </properties>
     </rule>
 </ruleset>

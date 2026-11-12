@@ -1,5 +1,6 @@
 package team.projectpulse.user;
 
+import edu.umd.cs.findbugs.annotations.SuppressFBWarnings;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,6 +14,7 @@ public class MyUserPrincipal implements UserDetails {
     private final PeerEvaluationUser peerEvaluationUser;
 
 
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP2", justification = "Holds the authenticated user's JPA entity on purpose; a copy would be detached from the persistence context")
     public MyUserPrincipal(PeerEvaluationUser peerEvaluationUser) {
         this.peerEvaluationUser = peerEvaluationUser;
     }
@@ -57,6 +59,7 @@ public class MyUserPrincipal implements UserDetails {
         return this.peerEvaluationUser.isEnabled();
     }
 
+    @SuppressFBWarnings(value = "EI_EXPOSE_REP", justification = "Returns the authenticated user's JPA entity on purpose; AuthService and JwtProvider read it, and a copy would be detached from the persistence context")
     public PeerEvaluationUser getPeerEvaluationUser() {
         return peerEvaluationUser;
     }

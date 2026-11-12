@@ -28,6 +28,7 @@ public class ArtifactKeySequence {
 
 
     public ArtifactKeySequence() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public ArtifactKeySequence(Team team, RequirementArtifactType type) {

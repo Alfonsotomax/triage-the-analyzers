@@ -25,6 +25,7 @@ public class Rubric {
 
 
     public Rubric() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public Rubric(String rubricName) {

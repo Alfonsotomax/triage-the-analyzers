@@ -16,6 +16,7 @@ public class ResetPasswordToken {
 
 
     public ResetPasswordToken() {
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public ResetPasswordToken(String email) {

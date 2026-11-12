@@ -29,7 +29,7 @@ public class UseCaseMainStep {
 
     
     public UseCaseMainStep() {
-
+        // Required by JPA, which creates the object before filling in its fields
     }
 
     public UseCaseMainStep(Long id, String actor, String actionText) {
