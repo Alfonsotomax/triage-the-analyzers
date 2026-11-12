@@ -3,6 +3,7 @@ package team.projectpulse.ram.document.template;
 import team.projectpulse.ram.requirement.SectionType;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DocumentTemplate {
@@ -19,11 +20,11 @@ public class DocumentTemplate {
     }
 
     public List<SectionTemplate> getSections() {
-        return sections;
+        return sections == null ? List.of() : Collections.unmodifiableList(sections);
     }
 
     public void setSections(List<SectionTemplate> sections) {
-        this.sections = sections;
+        this.sections = sections == null ? null : new ArrayList<>(sections);
     }
 
     public static class SectionTemplate {

@@ -226,7 +226,7 @@ public class EvaluationService {
         // For each student, compute her average total score, collect all public comments and private comments, and compute rating averages for each criterion.
         students.forEach(student -> {
             PeerEvaluationAverage peerEvaluationAverage = getPeerEvaluationAverage(week, student);
-            report.getPeerEvaluationAverages().add(peerEvaluationAverage);
+            report.addPeerEvaluationAverage(peerEvaluationAverage);
         });
 
         // Who has not submitted is not part of this report: it is BR-submission-owed, which the notification slice

@@ -17,6 +17,7 @@ import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.TemporalAdjusters;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -118,6 +119,14 @@ public class ReminderService {
      * @param failed the students it did not, in the order they were tried
      */
     public record ReminderResult(int sent, List<Student> failed) {
+        public ReminderResult {
+            failed = List.copyOf(failed);
+        }
+
+        @Override
+        public List<Student> failed() {
+            return Collections.unmodifiableList(failed);
+        }
     }
 
 }

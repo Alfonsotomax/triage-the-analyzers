@@ -7,4 +7,28 @@
 
      Unlike the baseline, this file may grow, but every entry is a reviewed decision. -->
 <FindBugsFilter>
+  <!-- EI_EXPOSE_REP in JPA entities: Hibernate tracks changes through the collections and associated
+       entities the getters return (team.getStudents().add(s)); returning copies would make those
+       changes silently not save. No untrusted code runs in this JVM. -->
+  <Match><Annotation name="jakarta.persistence.Entity"/><Bug pattern="EI_EXPOSE_REP"/></Match>
+  <!-- EI_EXPOSE_REP in DTOs: *.dto types are data carriers built by a converter and serialized to JSON
+       straight away; nothing keeps them, so a caller changing a returned list cannot corrupt state. -->
+  <Match><Package name="~team\.projectpulse\..*\.dto"/><Bug pattern="EI_EXPOSE_REP"/></Match>
+  <!-- EI_EXPOSE_REP2 in JPA entities: setters and constructors store associated entities and
+       collections; Hibernate needs those same instances, and a copy would detach them. -->
+  <Match><Annotation name="jakarta.persistence.Entity"/><Bug pattern="EI_EXPOSE_REP2"/></Match>
+  <!-- EI_EXPOSE_REP2 in DTOs: *.dto types are built by a converter and serialized straight away. -->
+  <Match><Package name="~team\.projectpulse\..*\.dto"/><Bug pattern="EI_EXPOSE_REP2"/></Match>
+  <!-- EI_EXPOSE_REP2 in Spring beans: constructors store injected beans, which are shared singletons
+       by design. SpotBugs flags them only because the bean classes are not final. The matcher reads
+       annotations placed directly on the class, so each stereotype is listed. -->
+  <Match>
+    <Or>
+      <Annotation name="org.springframework.web.bind.annotation.RestController"/>
+      <Annotation name="org.springframework.stereotype.Service"/>
+      <Annotation name="org.springframework.stereotype.Component"/>
+      <Annotation name="org.springframework.context.annotation.Configuration"/>
+    </Or>
+    <Bug pattern="EI_EXPOSE_REP2"/>
+  </Match>
 </FindBugsFilter>
