@@ -82,7 +82,9 @@ public class PeerEvaluationAverage {
     }
 
     public List<String> getPrivateComments() {
-        return privateComments == null ? List.of() : Collections.unmodifiableList(privateComments);
+        // null means withheld, not empty: EvaluationService nulls private comments in a student's own summary,
+        // and the API returns that null to the client.
+        return privateComments == null ? null : Collections.unmodifiableList(privateComments); // NOPMD - ReturnEmptyCollectionRatherThanNull: null is the "withheld" signal above
     }
 
     public void setPrivateComments(List<String> privateComments) {
